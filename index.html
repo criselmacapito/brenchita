@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienes una carta 💌</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #fbe9ee;
+      font-family: Georgia, serif;
+      color: #6b2a45;
+    }
+
+    .pista {
+      opacity: 0.6;
+      margin-bottom: 30px;
+    }
+
+    /* El sobre */
+    .sobre {
+      position: relative;
+      width: 400px;
+      height: 300px;
+      background: #e8a0b4;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* La carta: escondida dentro del sobre */
+    .carta {
+      position: absolute;
+      left: 15px;
+      right: 15px;
+      top: 15px;
+      padding: 20px;
+      background: white;
+      border-radius: 6px;
+      font-size: 17px;
+      line-height: 1.5;
+      opacity: 0;
+      transition: all 1s;           /* la carta sale despacio, en 1 segundo */
+    }
+
+    /* El sello de corazón */
+    .sello {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 45px;
+      transition: all 0.5s;
+    }
+
+    /* ---- Cuando el sobre tiene la clase "abierto" ---- */
+    .abierto .carta {
+      opacity: 1;
+      transform: translateY(-160px);   /* la carta sube y sale del sobre */
+    }
+
+    .abierto .sello {
+      opacity: 0;                       /* el sello desaparece */
+    }
+  </style>
+</head>
+<body>
+
+  <p class="pista">Tienes una carta. Tócala 💌</p>
+
+  <div class="sobre" id="sobre" onclick="abrir()">
+    <div class="carta">
+      Solo queria que sepas lo mucho que te pienso de forma linda.<br>
+      y que mejor que escribiendote codigo, te amo mi pastelito dulce, besitos mua mua.<br><br>
+      — C.
+    </div>
+    <div class="sello">💗</div>
+  </div>
+
+  <script>
+    // Al tocar el sobre, le agregamos la clase "abierto".
+    // El CSS de arriba se encarga de la animación.
+    function abrir() {
+      document.getElementById("sobre").classList.add("abierto");
+    }
+  </script>
+
+</body>
+</html>
